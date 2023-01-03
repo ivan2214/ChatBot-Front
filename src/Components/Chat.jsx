@@ -72,19 +72,45 @@ function Chat() {
             <List
               key={i}
               p={5}
+              display='flex'
+              flexDirection='column'
+              gap={3}
               w='full'
+              alignItems={`${message.from == 'me' ? 'flex-end' : 'flex-start'}`}
               justifyContent={`${message.from == 'me' ? 'flex-end' : 'flex-start'}`}
+              bg='gray.500'
             >
-              <ListItem
-                w='full'
-                display='block'
-                color={`${message.from == 'me' ? 'green.300' : 'whiteAlpha.900'}`}
+              <HStack
+                direction='row'
+                align='center'
+                justifyContent={`${message.from == 'me' ? 'flex-end' : 'flex-start'}`}
               >
-                {message.meMessage}
-              </ListItem>
-              <ListItem w='full' display='block' color='whiteAlpha.900'>
-                {message.response}
-              </ListItem>
+                <Text color='green.100' display='block'>
+                  {message.from === 'me' && '😋'}
+                </Text>
+
+                <ListItem
+                  display='block'
+                  color={`${message.from == 'me' ? 'green.300' : 'whiteAlpha.900'}`}
+                >
+                  {message.meMessage}
+                </ListItem>
+              </HStack>
+
+              <HStack
+                direction='row'
+                align='center'
+                w='full'
+                justifyContent={`${message.from == 'me' ? 'flex-end' : 'flex-start'}`}
+              >
+                <Text color='green.100' display='block'>
+                  {message.from === 'me' && '🤖'}
+                </Text>
+
+                <ListItem w='full' display='block' color='whiteAlpha.900'>
+                  {message.response}
+                </ListItem>
+              </HStack>
             </List>
           )
         })}
