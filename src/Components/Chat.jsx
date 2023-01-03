@@ -20,7 +20,8 @@ function Chat() {
   const [input, setInput] = useState('')
 
   const sendMessage = async (message) => {
-    const res = await axios.post('http://localhost:3001/send', { message })
+    const url = 'https://chatbot-back-production.up.railway.app/send'
+    const res = await axios.post(url, { message })
     setMessages([
       ...messages,
       {
